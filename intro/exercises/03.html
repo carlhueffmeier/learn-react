@@ -1,16 +1,22 @@
 <!-- Creating custom components -->
+
 <body>
-<div id="root"></div>
-<script src="../react.development.js"></script>
-<script src="../react-dom.development.js"></script>
-<script src="../babel.js"></script>
-<script type="text/babel">
+  <div id="root"></div>
+  <script src="../react.development.js"></script>
+  <script src="../react-dom.development.js"></script>
+  <script src="../babel.js"></script>
+  <script type="text/babel">
 const element = (
   <div className="container">
-    <div className="message">Hello World</div>
-    <div className="message">Goodbye World</div>
+    {messageJSX('Hello World')}
+    {messageJSX('Goodbye World')}
   </div>
 )
+function messageJSX(message) {
+  return (
+    <div className="message">{message}</div>
+  )
+}
 // Just like in regular JavaScript, you often want to share code which you do
 // using functions. If you want to share JSX, you can do that as well. In React
 // we call these functions components and they have some special properties.
