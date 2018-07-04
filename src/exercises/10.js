@@ -30,8 +30,7 @@ class App extends React.Component {
           +
         </button>
         {items.map(i => (
-          // 🐨 this div needs a key. Set it to i.id
-          <div>
+          <div key={i.id}>
             <button onClick={() => this.removeItem(i)}>-</button>
             {i.value}:
             <input />

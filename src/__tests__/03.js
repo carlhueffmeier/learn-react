@@ -1,7 +1,7 @@
 import React from 'react'
 import {render, fireEvent} from '../../test/utils'
-import Usage from '../exercises-final/03'
-// import Usage from '../exercises/03'
+// import Usage from '../exercises-final/03'
+import Usage from '../exercises/03'
 
 test('calls the onButtonClick when the button is clicked', () => {
   const onButtonClick = jest.fn()

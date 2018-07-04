@@ -40,8 +40,20 @@ import React from 'react'
 // during the solution.
 
 class Counter extends React.Component {
+  state = {
+    counter: 0,
+  }
+
+  handleClick() {
+    this.setState(prevState => ({counter: prevState.counter + 1}))
+  }
+
   render() {
-    return <button />
+    return (
+      <button onClick={this.handleClick.bind(this)}>
+        {this.state.counter}
+      </button>
+    )
   }
 }
 

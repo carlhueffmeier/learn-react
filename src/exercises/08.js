@@ -20,6 +20,11 @@ class UsernameForm extends React.Component {
     event.preventDefault()
     this.props.onSubmitUsername(this.inputRef.current.value)
   }
+  handleChange = () => {
+    this.setState({
+      error: this.props.getErrorMessage(this.inputRef.current.value),
+    })
+  }
   // 🐨 create a bound `handleChange` function that takes the
   // value of the input and updates the `error` state to
   // whatever is returned from `this.props.getErrorMessage`
@@ -32,12 +37,14 @@ class UsernameForm extends React.Component {
           type="text"
           name="username"
           ref={this.inputRef}
-          // 🐨 add your onChange handler here
           onChange={this.handleChange}
         />
-        {/* 🐨 if there's an error, then render it in a div here */}
-        {/* 🐨 add a disabled prop to this button that's set to true if there's an error */}
-        <button type="submit">Submit</button>
+        {this.state.error ? (
+          <div style={{color: 'red'}}>{this.state.error}</div>
+        ) : null}
+        <button type="submit" disabled={Boolean(this.state.error)}>
+          Submit
+        </button>
       </form>
     )
   }

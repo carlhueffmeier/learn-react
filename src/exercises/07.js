@@ -12,6 +12,13 @@ import React from 'react'
 // the form.
 
 class UsernameForm extends React.Component {
+  inputNode = React.createRef()
+
+  handleSubmit(event) {
+    var inputValue = this.inputNode.current.value
+    this.props.onSubmitUsername(inputValue)
+    event.preventDefault()
+  }
   // 🐨 add a submit event handler here (`handleSubmit`).
   // Make sure to accept the `event` as an argument and call
   // `event.preventDefault()` to prevent the default behavior
@@ -33,9 +40,14 @@ class UsernameForm extends React.Component {
   render() {
     // add the `onSubmit` handler prop to the form
     return (
-      <form>
+      <form onSubmit={this.handleSubmit.bind(this)}>
         <label htmlFor="name-input">Username:</label>
-        <input id="name-input" type="text" name="username" />
+        <input
+          ref={this.inputNode}
+          id="name-input"
+          type="text"
+          name="username"
+        />
         <button type="submit">Submit</button>
       </form>
     )

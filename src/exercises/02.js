@@ -33,9 +33,21 @@ import React from 'react'
 // 💰 Use the className for the size and style (backgroundColor) for the color
 // 💰 each of the elements should also have the "box" className applied
 
-const smallBox = <div>small lightblue box</div>
-const mediumBox = <div>medium pink box</div>
-const largeBox = <div>large orange box</div>
+const smallBox = (
+  <div className="box box--small" style={{backgroundColor: 'lightblue'}}>
+    small lightblue box
+  </div>
+)
+const mediumBox = (
+  <div className="box box--medium" style={{backgroundColor: 'pink'}}>
+    medium pink box
+  </div>
+)
+const largeBox = (
+  <div className="box box--large" style={{backgroundColor: 'orange'}}>
+    large orange box
+  </div>
+)
 
 // Don't make changes to the Usage component. It's here to show you how your
 // component is intended to be used and is used in the tests.

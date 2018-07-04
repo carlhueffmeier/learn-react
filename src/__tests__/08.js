@@ -1,7 +1,7 @@
 import React from 'react'
 import {render, fireEvent} from '../../test/utils'
-import Usage from '../exercises-final/08'
-// import Usage from '../exercises/08'
+// import Usage from '../exercises-final/08'
+import Usage from '../exercises/08'
 
 test('calls the onSubmitUsername handler when the submit is fired', () => {
   const originalError = console.error

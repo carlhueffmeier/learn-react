@@ -23,7 +23,45 @@ class StopWatch extends React.Component {
   // to keep track of how much time has lapsed (so you can
   // display that number) as well as whether the stopwatch
   // is running (so you can change the "Start/Stop" text)
-  state = {lapse: 0, running: false}
+  initialState = {lapse: 0, running: false}
+  state = this.initialState
+
+  handleRunButtonClick() {
+    this.setState(state => ({running: !state.running}))
+  }
+
+  handleClearButtonClick() {
+    this.setState(this.initialState)
+  }
+
+  // eslint-disable-next-line no-unused-vars
+  componentDidUpdate(prevProps, prevState) {
+    if (!prevState.running && this.state.running) {
+      this.startTimer()
+    } else if (prevState.running && !this.state.running) {
+      this.stopTimer()
+    }
+  }
+
+  componentWillUnmount() {
+    this.stopTimer()
+  }
+
+  startTimer() {
+    // Start from the currently displayed time instead of 0ms
+    this.startTime = Date.now() - this.state.lapse
+    this.intervalHandle = setInterval(() => {
+      var lapse = Date.now() - this.startTime
+      this.setState({lapse})
+    })
+  }
+
+  stopTimer() {
+    if (this.intervalHandle) {
+      clearInterval(this.intervalHandle)
+      this.intervalHandle = undefined
+    }
+  }
 
   // 🐨 You'll need a bound click handler for the Start/Stop button
   // you can call it `handleRunClick`. If the stopwatch
@@ -53,12 +91,25 @@ class StopWatch extends React.Component {
   // 🐨 Add a `componentWillUnmount` method here that simply clears `this.intervalId`
   render() {
     // 🐨 here you'll need to render the stopwatch. It should have the following structure:
-    // <div>
-    //   <label>{/* Render the lapsed time with the suffix `ms` */}</label>
-    //   <button>{/* Render start or stop depending on whether it's running */}</button>
-    //   <button>Clear</button>
-    // </div>
-    return 'todo'
+    var timeLabel = `${this.state.lapse} ms`
+    var buttonLabel = this.state.running ? 'Stop' : 'Start'
+    return (
+      <div>
+        <label style={labelStyles}>{timeLabel}</label>
+        <button
+          style={buttonStyles}
+          onClick={this.handleRunButtonClick.bind(this)}
+        >
+          {buttonLabel}
+        </button>
+        <button
+          style={buttonStyles}
+          onClick={this.handleClearButtonClick.bind(this)}
+        >
+          Clear
+        </button>
+      </div>
+    )
   }
 }
 

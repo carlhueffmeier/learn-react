@@ -1,7 +1,7 @@
 import React from 'react'
 import {render, fireEvent} from '../../test/utils'
-import Usage from '../exercises-final/09'
-// import Usage from '../exercises/09'
+// import Usage from '../exercises-final/09'
+import Usage from '../exercises/09'
 
 test('keeps things in sync', () => {
   const {container} = render(<Usage />)

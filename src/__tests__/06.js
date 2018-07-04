@@ -1,7 +1,7 @@
 import React from 'react'
 import {render} from '../../test/utils'
-import Usage from '../exercises-final/06'
-// import Usage from '../exercises/06'
+// import Usage from '../exercises-final/06'
+import Usage from '../exercises/06'
 
 test('calls VanillaTilt.init with the root node', () => {
   const {container} = render(<Usage />)

@@ -40,6 +40,14 @@ class Tilt extends React.Component {
 
   // 🐨 add a `componentDidMount` lifecycle hook (class method) here.
   // and use VanillaTilt to make your div do cool stuff.
+  componentDidMount() {
+    VanillaTilt.init(this.rootNode.current, {
+      max: 25,
+      glare: true,
+      speed: 400,
+      'max-glare': 0.5,
+    })
+  }
   // 💰 like this:
   // VanillaTilt.init(yourDOMNode, {
   //   max: 25,
